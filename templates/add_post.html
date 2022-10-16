@@ -1,0 +1,34 @@
+<!-- Modal Add Post Form -->
+<div class="modal fade" id="addModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/posts" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="Author" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required />
+                    </div>
+                   <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" />
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-text">Content</span>
+                      <textarea class="form-control" id="content" name="content" aria-label="With textarea" required></textarea>
+                    </div>
+                    <div class="modal-footer d-block">
+                        <button type="submit" class="btn btn-warning float-end">Add Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
