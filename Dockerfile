@@ -5,4 +5,6 @@ COPY ./ ./
 
 RUN pip install -r requirements.txt
 
-CMD ["flask", "run", "--host", "0.0.0.0"]
+ENV FLASK_DEBUG=1
+ENV FLASK_RUN_HOST=0.0.0.0
+CMD ["flask", "run"]
