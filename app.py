@@ -5,13 +5,8 @@ from bson import ObjectId
 import config
 
 app = Flask(__name__, template_folder='templates')
-mongodb_client = MongoClient(
-    host=config.DB_HOST,
-    port=int(config.DB_PORT),
-    username=config.DB_USERNAME,
-    password=config.DB_PASSWORD
-)
-mongo_db = mongodb_client.flask_db
+mongodb_client = MongoClient(config.DB_URI)
+mongo_db = mongodb_client.blog_db
 db_posts = mongo_db.posts
 
 
