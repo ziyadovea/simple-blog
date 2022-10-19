@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, Response
+from flask import Flask, render_template, request, redirect, url_for, Response, abort
 from pymongo import MongoClient
 from bson import ObjectId
 
@@ -34,6 +34,8 @@ def posts() -> str | Response:
 
 @app.route('/posts/<path:post_id>', methods=['GET', 'PUT', 'DELETE'])
 def post(post_id: str = '') -> str:
+    if not ObjectId.is_valid(post_id):
+        abort(404)
     query: dict[str, ObjectId] = {'_id': ObjectId(post_id)}
     if request.method == 'PUT':
         db_posts.update_one(query, {'$set': request.get_json()})
