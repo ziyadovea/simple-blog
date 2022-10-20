@@ -99,7 +99,6 @@
             const url = '/posts/' + '{{ post._id }}'
             fetch(url, requestOptions)
             window.location.href = url
-            return false
         }
         document.getElementById("edit-form").addEventListener("submit", function(e) {
             e.preventDefault()
