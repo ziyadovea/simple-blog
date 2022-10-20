@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="edit-form">
                     <div class="mb-3">
                         <label class="form-label">Author</label>
                         <input value={{ post.author }} type="text" class="form-control" id="edit-form-author" name="author" placeholder="Author" required />
@@ -16,13 +16,13 @@
                         <label class="form-label">Title</label>
                         <input value={{ post.title }} type="text" class="form-control" id="edit-form-title" name="title" placeholder="Title" required />
                     </div>
-                   <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Description</label>
                         <input {% if post.description %}value={{ post.description }}{% endif %} type="text" class="form-control" id="edit-form-description" name="description" placeholder="Description" />
                     </div>
                     <div class="input-group">
-                      <span class="input-group-text">Content</span>
-                      <textarea class="form-control" id="edit-form-content" name="content" aria-label="With textarea" required>{{ post.content }}</textarea>
+                        <span class="input-group-text">Content</span>
+                        <textarea class="form-control" id="edit-form-content" name="content" aria-label="With textarea" required>{{ post.content }}</textarea>
                     </div>
                     <div class="modal-footer d-block">
                         <button id="edit-post" type="submit" class="btn btn-warning float-end">Edit Post</button>

@@ -7,25 +7,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/posts" method="POST">
+                <form id="add-form">
                     <div class="mb-3">
                         <label class="form-label">Author</label>
-                        <input type="text" class="form-control" id="author" name="author" placeholder="Author" required />
+                        <input type="text" class="form-control" id="add-form-author" name="author" placeholder="Author" required />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required />
+                        <input type="text" class="form-control" id="add-form-title" name="title" placeholder="Title" required />
                     </div>
-                   <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Description" />
+                        <input type="text" class="form-control" id="add-form-description" name="description" placeholder="Description" />
                     </div>
                     <div class="input-group">
-                      <span class="input-group-text">Content</span>
-                      <textarea class="form-control" id="content" name="content" aria-label="With textarea" required></textarea>
+                        <span class="input-group-text">Content</span>
+                        <textarea class="form-control" id="add-form-content" name="content" aria-label="With textarea" required></textarea>
                     </div>
                     <div class="modal-footer d-block">
-                        <button type="submit" class="btn btn-warning float-end">Add Post</button>
+                        <button id="add-post" type="submit" class="btn btn-warning float-end">Add Post</button>
                     </div>
                 </form>
             </div>

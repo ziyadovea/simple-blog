@@ -1,103 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap -->
-  <!-- Latest compiled and minified CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <title>Simple Blog</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <title>Simple Blog</title>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#aboutModal">
-             About
-         </button>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/posts">Posts</a>
-      </li>
-      <li class="nav-item">
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModalForm">
-            Edit post
-          </button>
-          <button id="delete-post" name="delete-post" type="button" class="delete-post btn btn-danger">
-            Delete post
-          </button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                        About
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/posts">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModalForm">
+                            Edit post
+                        </button>
+                        <button id="delete-post" name="delete-post" type="button" class="delete-post btn btn-danger">
+                            Delete post
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </ul>
-  </div>
-</nav>
+    </nav>
 
-<!-- Show Post -->
-<p class="text-center" style="font-size: 40px">{{ post.title }}</p>
+    <!-- Show Post -->
+    <p class="text-center" style="font-size: 40px">{{ post.title }}</p>
 
-<dl>
-  <dt>Author</dt>
-  <dd>{{ post.author }}</dd>
+    <dl>
+        <dt>Author</dt>
+        <dd>{{ post.author }}</dd>
 
-  {% if post.description %}
-    <dt>Description</dt>
-    <dd>{{ post.description }}</dd>
-  {% endif %}
-</dl>
+        {% if post.description %}
+        <dt>Description</dt>
+        <dd>{{ post.description }}</dd>
+        {% endif %}
+    </dl>
 
-<h5>Content</h5>
-<p class="lead">
-  {{ post.content }}
-</p>
+    <h5>Content</h5>
+    <p class="lead">
+        {{ post.content }}
+    </p>
 
-{% include 'about.html' %}
+    {% include 'about.html' %} {% include 'edit_post.html' %}
 
-{% include 'edit_post.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    function deletePost() {
-        if (!confirm('Sure?')) {
-            return
-        }
-        fetch('/posts/' + '{{ post._id }}', {
-          method: 'DELETE',
-        })
-        window.location.href = '/posts'
-    }
-    document.getElementById("delete-post").addEventListener("click", deletePost, false)
-
-    function editPost() {
-        const title = document.getElementById("edit-form-title").value
-        const author = document.getElementById("edit-form-author").value
-        const description = document.getElementById("edit-form-description").value
-        const content = document.getElementById("edit-form-content").value
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: title,
-                author: author,
-                description: description,
-                content: content,
+    <script type="text/javascript">
+        function deletePost() {
+            if (!confirm('Sure?')) {
+                return
+            }
+            fetch('/posts/' + '{{ post._id }}', {
+                method: 'DELETE',
             })
+            window.location.href = '/posts'
         }
-        fetch('/posts/' + '{{ post._id }}', requestOptions)
-        window.location.href = '/posts/' + '{{ post.id }}'
-    }
-    document.getElementById("edit-post").addEventListener("click", editPost, false)
-  </script>
+        document.getElementById("delete-post").addEventListener("click", deletePost, false)
+
+        function editPost() {
+            const title = document.getElementById("edit-form-title").value
+            const author = document.getElementById("edit-form-author").value
+            const description = document.getElementById("edit-form-description").value
+            const content = document.getElementById("edit-form-content").value
+            const requestOptions = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title,
+                    author: author,
+                    description: description,
+                    content: content,
+                })
+            }
+            const url = '/posts/' + '{{ post._id }}'
+            fetch(url, requestOptions)
+            window.location.href = url
+            return false
+        }
+        document.getElementById("edit-form").addEventListener("submit", function(e) {
+            e.preventDefault()
+            editPost()
+            $('#editModalForm').modal('hide')
+        }, false)
+    </script>
 
 </body>
+
 </html>

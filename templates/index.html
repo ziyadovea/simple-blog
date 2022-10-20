@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap -->
-  <!-- Latest compiled and minified CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
-  <title>Simple Blog</title>
+    <title>Simple Blog</title>
 </head>
+
 <body style="background-color: #cbdaec">
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#aboutModal">
-             About
-         </button>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/posts">Posts</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                        About
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/posts">Posts</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-<h1 style="padding: 10px">Welcome to Simple Blog!</h1>
+    <h1 style="padding: 10px">Welcome to Simple Blog!</h1>
 
-{% include 'about.html' %}
+    {% include 'about.html' %}
 
 </body>
+
 </html>
